@@ -1,0 +1,17 @@
+00500093 // ADDI x1, x0, 5     -> x1 = 5
+00a00113 // ADDI x2, x0, 10    -> x2 = 10
+002081b3 // ADD  x3, x1, x2    -> x3 = 15
+40208233 // SUB  x4, x1, x2    -> x4 = -5
+00302023 // SW   x3, 0(x0)     -> Mem[0] = 15
+00002283 // LW   x5, 0(x0)     -> x5 = 15
+00530463 // BEQ  x6, x5, 8     -> If x6==x5 skip next (wont skip yet)
+00100313 // ADDI x6, x0, 1     -> x6 = 1
+00530063 // BEQ  x6, x5, 0     -> If x6==x5 (false, no jump)
+000013b7 // LUI  x7, 1         -> x7 = 4096 (0x1000)
+00736413 // ORI  x8, x6, 7     -> x8 = 1 | 7 = 7
+008374b3 // AND  x9, x6, x8    -> x9 = 1 & 7 = 1
+00249533 // SLL  x10, x9, x2   -> x10 = 1 << 10 = 1024
+008005ef // JAL  x11, 8        -> Jump 2 instrs, x11 = PC+4
+00000013 // ADDI x0, x0, 0     -> NOP (Skipped by JAL)
+00058667 // JALR x12, x11, 0   -> Jump to addr in x11, x12 = PC+4
+00a5c663 // BLT  x11, x10, 12  -> If x11 < x10, jump
